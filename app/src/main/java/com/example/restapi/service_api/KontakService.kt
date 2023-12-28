@@ -23,4 +23,7 @@ interface KontakService {
     @POST("kontak")
     suspend fun insertKontak(@Body kontak: Kontak)
 
+    @PUT("kontak/{id}")
+    suspend fun updateKontak(@Path("id") id: Int, @Body kontak: Kontak)
+
 }
