@@ -1,14 +1,15 @@
-package com.example.restapi.ui
+package com.example.restapi.ui.insert.viewmodel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.restapi.repository.KontakRepositori
+import com.example.restapi.model.Kontak
+import com.example.restapi.repository.KontakRepository
 import kotlinx.coroutines.launch
 
-class InsertViewModel (private val kontakRepository: KontakRepositori) : ViewModel(){
+class InsertViewModel (private val kontakRepository: KontakRepository) : ViewModel(){
     var insertKontakState by mutableStateOf(InsertUiState())
         private set
 
@@ -36,4 +37,22 @@ data class InsertUiEvent(
     val nama: String = "",
     val alamat: String = "",
     val telpon: String = "",
+)
+
+fun InsertUiEvent.toKontak(): Kontak = Kontak(
+    id = id,
+    nama = nama,
+    alamat = alamat,
+    telpon = telpon,
+)
+
+fun Kontak.toUiStateKontak(): InsertUiState = InsertUiState(
+    insertUiEvent = toInsertUiEvent(),
+)
+
+fun Kontak.toInsertUiEvent(): InsertUiEvent = InsertUiEvent(
+    id = id,
+    nama = nama,
+    alamat = alamat,
+    telpon = telpon,
 )

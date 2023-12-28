@@ -2,8 +2,16 @@ package com.example.restapi.navigasi
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHost
+
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.restapi.ui.insert.screen.DestinasiEntry
+import com.example.restapi.ui.home.screen.DestinasiHome
+import com.example.restapi.ui.insert.screen.EntryKontakScreen
+import com.example.restapi.ui.home.screen.HomeScreen
+
 
 @Composable
 fun PengelolaHalaman(navController: NavHostController = rememberNavController()){
@@ -13,20 +21,18 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
         modifier = Modifier,
     ){
         composable(DestinasiHome.route){
-            HomeScreen(navigateToItemEntry = {
-                navController.navigate(DestinasiEntry.route)
-            },
+            HomeScreen(
+                navigateToItemEntry = {
+                    navController.navigate(DestinasiEntry.route)
+                },
                 onDetailClick = {
                 }
             )
         }
-        composable(
-            DestinasiEntry.route
-        ){
+
+        composable(DestinasiEntry.route){
             EntryKontakScreen(navigateBack = {
-                navController.navigate(
-                    DestinasiHome.route
-                ){
+                navController.navigate(DestinasiHome.route){
                     popUpTo(DestinasiHome.route){
                         inclusive = true
                     }

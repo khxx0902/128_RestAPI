@@ -1,7 +1,6 @@
 package com.example.restapi.service_api
 
 import com.example.restapi.model.Kontak
-import okhttp3.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -22,6 +21,9 @@ interface KontakService {
 
     @POST("kontak")
     suspend fun insertKontak(@Body kontak: Kontak)
+
+    @PUT("kontak/{id}")
+    suspend fun updateKontak(@Path("id") Id: Int, @Body kontak: Kontak)
 
     @DELETE("kontak/{id}")
     suspend fun deleteKontak(@Path("id") id: Int): retrofit2.Response<Void>

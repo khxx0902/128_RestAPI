@@ -1,4 +1,4 @@
-package com.example.restapi.ui
+package com.example.restapi
 
 import android.app.Application
 import com.example.restapi.repository.AppContainer

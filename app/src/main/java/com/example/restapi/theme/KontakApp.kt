@@ -11,24 +11,21 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.restapi.navigasi.PengelolaHalaman
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun KontakApp(
-    homeViewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
+
 ){
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { TopAppBar(scrollBehavior = scrollBehavior)}
     ){
         Surface (
             modifier = Modifier
@@ -44,16 +41,17 @@ fun KontakApp(
 @Composable
 fun TopAppBarKontak(
     title: String,
-    canNavigasiBack: Boolean,
-    modifier: Modifier = Modifier,
+    canNavigateBack: Boolean,
+    navigateUp: () -> Unit = {},
     scrollBehavior: TopAppBarScrollBehavior? = null,
-    navigateUp: () -> Unit = {}
+    modifier: Modifier = Modifier
 ){
-    CenterAlignedTopAppBar(title = { Text(title) },
+    CenterAlignedTopAppBar(
+        title = { Text(title) },
         modifier = modifier,
         scrollBehavior = scrollBehavior,
         navigationIcon = {
-            if (canNavigasiBack){
+            if(canNavigateBack){
                 IconButton(onClick = navigateUp) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,

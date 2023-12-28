@@ -1,4 +1,4 @@
-package com.example.restapi.ui
+package com.example.restapi.ui.home.viewmodel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.restapi.model.Kontak
+import com.example.restapi.repository.KontakRepository
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException

@@ -1,4 +1,4 @@
-package com.example.restapi.ui
+package com.example.restapi.ui.insert.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,6 +23,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.restapi.navigasi.DestinasiNavigasi
 import com.example.restapi.theme.PenyediaViewModel
 import com.example.restapi.theme.TopAppBarKontak
+import com.example.restapi.ui.insert.viewmodel.InsertUiEvent
+import com.example.restapi.ui.insert.viewmodel.InsertUiState
+import com.example.restapi.ui.insert.viewmodel.InsertViewModel
 import kotlinx.coroutines.launch
 
 object DestinasiEntry: DestinasiNavigasi {
@@ -43,8 +46,8 @@ fun EntryKontakScreen(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             TopAppBarKontak(
-                title = DestinasiEntry.titleRes ,
-                canNavigasiBack = true,
+                title = DestinasiEntry.titleRes,
+                canNavigateBack = true,
                 scrollBehavior = scrollBehavior,
                 navigateUp = navigateBack
             )
